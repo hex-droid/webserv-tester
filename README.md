@@ -1,2 +1,2 @@
 ### requirements
--	requests
+-	utils.http

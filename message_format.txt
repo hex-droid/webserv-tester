@@ -1,0 +1,39 @@
+//
+// rfc 7230 section 3
+//
+
+Ignore or reject message with whitespace between the start-line and the first
+header field.
+
+Recipients of an invalid request-line SHOULD respond with either a 400 error or 301 redirect
+with the request-target properly encoded.
+
+It is RECOMMENDED that all HTTP senders and recipients support, at a minimum, request-line
+lengths of 8000 bytes.
+
+No whitespace is allowed between the header field-name and colon.
+
+The presence of a message body in a request in signaled by a Content-Length or
+Transfer-Encoding header field. Request message framing is independent of method
+semantics, even if the method does not define any use for a message body.
+
+A sender MUST NOT apply chunked more than once to a message body.
+
+
+//https://datatracker.ietf.org/doc/html/rfc7231#section-3.3
+//
+Header fields that specifically descrive the payload, rather than the associated
+representation, are referred to as "payload header fields".
+
+A user agent SHOULD NOT send a Content-Length header field when the request message does
+not contain a payload body and the method semantics do not anticipate such a body.
+
+Any Content-Length field value greater than of equal to zero is valid.
+
+//https://datatracker.ietf.org/doc/html/rfc7230#section-9.3
+//	reference to recommendations for minimum size limits on request-line and 
+//	header fields.
+//
+A recipients MUST anticipate potentially large decimal numerals and prevent parsing errors due
+to integer conversion overflows. 413 Payload Too large.
+
